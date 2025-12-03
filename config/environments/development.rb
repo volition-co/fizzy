@@ -88,4 +88,30 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer and notification view templates.
   config.action_controller.default_url_options = { host: config.hosts.first, port: 3006 }
   config.action_mailer.default_url_options     = { host: config.hosts.first, port: 3006 }
+
+  # Allow Superconductor to embed your dev server in an iframe via CSP
+  config.content_security_policy do |policy|
+    policy.frame_ancestors :self, "https://*.superconductor.dev", "https://superconductor.dev"
+  end
+
+  if ENV["AGENT_RAILS_HOST"].present?
+    agent_host = ENV["AGENT_RAILS_HOST"]
+
+    # Allow accessing the dev server from the agent hostname
+    config.hosts << agent_host
+
+    # Set default host for URL generation
+    routes.default_url_options[:host] = agent_host
+    config.action_mailer.default_url_options = { host: agent_host }
+  
+    # Set asset host for controllers and mailers
+    config.asset_host = "https://#{agent_host}"
+
+    # Set default host for Action Cable
+    config.action_cable.url = "ws://#{agent_host}/cable"
+    config.action_cable.allowed_request_origins = ["https://#{agent_host}", "http://#{agent_host}"]
+
+    # Set cookie same site protection to none to allow iframe login
+    config.action_dispatch.cookies_same_site_protection = :none
+  end
 end
