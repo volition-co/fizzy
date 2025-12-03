@@ -102,6 +102,7 @@ Rails.application.configure do
 
     # Set default host for URL generation
     routes.default_url_options = { host: agent_host }
+    config.action_controller.default_url_options = { host: agent_host }
     config.action_mailer.default_url_options = { host: agent_host }
   
     # Set asset host for controllers and mailers
