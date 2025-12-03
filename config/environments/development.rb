@@ -112,14 +112,15 @@ Rails.application.configure do
     config.action_cable.url = "ws://#{agent_host}/cable"
     config.action_cable.allowed_request_origins = ["https://#{agent_host}", "http://#{agent_host}"]
 
-    # Set cookie same site protection to none to allow iframe login
-    config.action_dispatch.cookies_same_site_protection = :none
-
+    
     # Assume all access to the app is happening through a SSL-terminating reverse proxy.
     # Can be used together with config.force_ssl for Strict-Transport-Security and secure cookies.
     config.assume_ssl = true
 
     # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
     config.force_ssl = true
+
+    # Set cookie same site protection to none to allow iframe login
+    config.action_dispatch.cookies_same_site_protection = :none
   end
 end
