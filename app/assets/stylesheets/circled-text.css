@@ -13,7 +13,9 @@
       mix-blend-mode: multiply;
 
       @media (prefers-color-scheme: dark) {
-        mix-blend-mode: screen;
+        :root:not(.light) & {
+          mix-blend-mode: screen;
+        }
       }
     }
 

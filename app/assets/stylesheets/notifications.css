@@ -21,7 +21,9 @@
 
     .card {
       @media (prefers-color-scheme: dark) {
-        box-shadow: 0 0 0 1px var(--color-ink-lighter);
+        :root:not(.light) & {
+          box-shadow: 0 0 0 1px var(--color-ink-lighter);
+        }
       }
     }
 

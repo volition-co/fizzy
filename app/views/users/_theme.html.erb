@@ -1,0 +1,20 @@
+<div class="flex flex-column align-center gap txt-medium--responsive txt-medium">
+  <div class="flex flex-column gap full-width align-center">
+    <strong class="txt-medium">Theme preference</strong>
+    <p class="txt-small txt-subtle margin-none">Choose how Fizzy looks across all your accounts</p>
+  </div>
+
+  <%= form_with model: user.identity, url: identity_path,
+      class: "flex flex-column gap-half full-width",
+      method: :patch, local: true, data: { controller: "form theme-switcher" } do |form| %>
+    <div class="flex flex-column gap-half align-center">
+      <%= form.select :theme_preference, theme_preference_options_for(user.identity), {},
+          class: "input input--select txt-align-center",
+          style: "max-width: 20ch;",
+          data: {
+            action: "change->theme-switcher#change change->form#submit",
+            theme_switcher_target: "select"
+          } %>
+    </div>
+  <% end %>
+</div>

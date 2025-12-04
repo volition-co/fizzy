@@ -180,7 +180,9 @@
       outline-offset: var(--focus-ring-offset);
 
       @media (prefers-color-scheme: dark) {
-        outline-color: oklch(var(--lch-blue-medium));
+        :root:not(.light) & {
+          outline-color: oklch(var(--lch-blue-medium));
+        }
       }
     }
   }
