@@ -8,6 +8,8 @@ class Identity < ApplicationRecord
 
   has_one_attached :avatar
 
+  enum :theme_preference, %i[ system light dark ], default: :system, prefix: :theme
+
   before_destroy :deactivate_users
 
   normalizes :email_address, with: ->(value) { value.strip.downcase.presence }
