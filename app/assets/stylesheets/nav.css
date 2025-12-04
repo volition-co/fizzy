@@ -24,7 +24,9 @@
         }
 
         @media (prefers-color-scheme: dark) {
-          --input-background: var(--color-ink-lighter);
+          :root:not(.light) & {
+            --input-background: var(--color-ink-lighter);
+          }
         }
       }
     }

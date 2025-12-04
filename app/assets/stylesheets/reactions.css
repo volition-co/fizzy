@@ -96,7 +96,9 @@
         filter: brightness(var(--reaction-hover-brightness));
 
         @media (prefers-color-scheme: dark) {
-          --reaction-hover-brightness: 1.25;
+          :root:not(.light) & {
+            --reaction-hover-brightness: 1.25;
+          }
         }
       }
     }

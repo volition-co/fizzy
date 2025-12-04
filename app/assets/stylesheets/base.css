@@ -56,7 +56,9 @@
     background: var(--color-selected);
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--color-selected-dark);
+      :root:not(.light) & {
+        background-color: var(--color-selected-dark);
+      }
     }
   }
 
