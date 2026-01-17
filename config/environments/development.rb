@@ -91,7 +91,7 @@ Rails.application.configure do
 
   # Allow Superconductor to embed your dev server in an iframe via CSP
   config.content_security_policy do |policy|
-    policy.frame_ancestors :self, "https://*.superconductor.dev", "https://superconductor.dev"
+    policy.frame_ancestors :self, "https://*.superconductor.com", "https://superconductor.com"
   end
 
   if ENV["AGENT_RAILS_HOST"].present?
